@@ -21,9 +21,10 @@ const TableExample = () => {
   const rows = [
     createData("Tomas", "Krinickas", 24, "Front-End Developer"),
     createData("Petras", "Petraitis", 30, "Projectionist"),
+    createData("Kastytis", "Melynas", 40, "Cigarette"),
   ];
   return (
-    <TableContainer component={Paper} sx={{ width: 650 }}>
+    <TableContainer component={Paper} sx={{ width: 650, m: 5 }}>
       <Table sx={{ minWidth: 650 }}>
         <TableHead>
           <TableRow>
@@ -36,7 +37,7 @@ const TableExample = () => {
         <TableBody>
           {rows.map((row, index) => (
             <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" align="right">
                 {row.name}
               </TableCell>
               <TableCell align="right">{row.lastName}</TableCell>
