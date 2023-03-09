@@ -2,6 +2,7 @@ import { Box, Button, IconButton, Typography } from "@mui/material";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
+import TableExample from "./TableExample";
 
 const Examples = () => {
   //disabled={true/false} jeigu reikia state
@@ -71,6 +72,8 @@ const Examples = () => {
       >
         Tomas
       </Box>
+      <hr />
+      <TableExample />
     </div>
   );
 };
