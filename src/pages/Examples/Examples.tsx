@@ -16,7 +16,7 @@ const Examples = () => {
       <Button variant="contained" disableElevation onClick={() => alert("say hello")}>
         Outlined
       </Button>
-      <Button variant="outlined">Contained</Button>
+      <Button variant="outlined">Outlined</Button>
       <hr />
       <Button variant="contained" color="info">
         Info
