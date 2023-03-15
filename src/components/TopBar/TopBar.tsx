@@ -2,11 +2,10 @@ import { alpha, styled } from "@mui/material/styles";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import Toolbar from "@mui/material/Toolbar";
+import TopBarMenu from "./TopBarMenu";
 import Typography from "@mui/material/Typography";
 
 const Search = styled("div")(({ theme }) => ({
@@ -18,9 +17,11 @@ const Search = styled("div")(({ theme }) => ({
   },
   marginLeft: 0,
   width: "100%",
+  marginRight: theme.spacing(1),
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
     width: "auto",
+    marginRight: theme.spacing(2),
   },
 }));
 
@@ -38,14 +39,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "22ch",
       "&:focus": {
-        width: "20ch",
+        width: "30ch",
       },
     },
   },
@@ -53,8 +53,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const TopBar = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, position: "sticky", top: 0, zIndex: 2 }}>
+      <AppBar position="sticky">
         <Toolbar>
           <Typography
             variant="h6"
@@ -70,6 +70,7 @@ const TopBar = () => {
             </SearchIconWrapper>
             <StyledInputBase placeholder="Search…" inputProps={{ "aria-label": "search" }} />
           </Search>
+          <TopBarMenu />
         </Toolbar>
       </AppBar>
     </Box>
