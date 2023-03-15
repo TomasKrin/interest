@@ -22,12 +22,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   const isLoggedIn = !!user;
 
-  const handleLogOut = () => {
-    setUser(null);
-  };
-
   const handleLogIn = (user: User) => {
     setUser(user);
+  };
+
+  const handleLogOut = () => {
+    setUser(null);
   };
 
   return (
