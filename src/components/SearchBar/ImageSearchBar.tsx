@@ -1,7 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/store";
 
 import SearchBar from "./SearchBar";
-import { debounce } from "lodash";
 import { onChange } from "../../store/searchSlice";
 
 const ImageSearchBar = () => {

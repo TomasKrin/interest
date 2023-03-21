@@ -1,5 +1,5 @@
 import { ImageList, ImageListItem, LinearProgress } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 import { PixabayImage } from "../../types/image";
@@ -21,7 +21,7 @@ const Home = () => {
         setDebouncedSearch(searchValue);
         setPage(1);
         setItems([]);
-      }
+      } 
     }, 1000);
   }, [searchValue]);
 
@@ -34,6 +34,7 @@ const Home = () => {
   const fetchData = () => {
     setPage((prevPage) => prevPage + 1);
   };
+
   return (
     <InfiniteScroll
       dataLength={items.length}
