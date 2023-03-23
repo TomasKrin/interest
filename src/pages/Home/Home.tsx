@@ -1,29 +1,29 @@
 import { ImageList, ImageListItem, LinearProgress } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import InfiniteScroll from "react-infinite-scroll-component";
 import { PixabayImage } from "../../types/image";
 import { uniqBy } from "lodash";
 import { useAppSelector } from "../../hooks/store";
+import useDebounce from "../../hooks/useDebounce";
 import { useImages } from "../../hooks/images";
+import usePreviousValue from "../../hooks/usePreviousValue";
 
 const Home = () => {
   const searchValue = useAppSelector((state) => state.search.value);
-  const [debouncedSearch, setDebouncedSearch] = useState("");
+  const debouncedSearch = useDebounce(searchValue);
+  const previouseSearchValue = usePreviousValue(searchValue);
   const [page, setPage] = useState(1);
   const [items, setItems] = useState<PixabayImage[]>([]);
   const { data, isLoading } = useImages(page, debouncedSearch);
   const images = data || [];
 
   useEffect(() => {
-    setTimeout(() => {
-      if (searchValue) {
-        setDebouncedSearch(searchValue);
-        setPage(1);
-        setItems([]);
-      } 
-    }, 1000);
-  }, [searchValue]);
+    if (searchValue || (!searchValue && previouseSearchValue)) {
+      setPage(1);
+      setItems([]);
+    }
+  }, [searchValue, previouseSearchValue]);
 
   useEffect(() => {
     if (!isLoading) {
