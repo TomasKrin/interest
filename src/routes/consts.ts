@@ -7,6 +7,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import MainLayout from "../layouts/MainLayout";
 import Pin from "../pages/Pin/Pin";
+import TypeScriptGeneric from "../pages/Examples/TypeScriptGeneric";
 
 export const HOME_PATH = "/";
 export const PIN_PATH = "/:id";
@@ -18,7 +19,7 @@ export const mainLayoutRoutes: MainLayoutRoutes = {
   routes: [
     { path: HOME_PATH, Component: Home },
     { path: PIN_PATH, Component: Pin },
-    { path: EXAMPLES_PATH, Component: CustomHooks },
+    { path: EXAMPLES_PATH, Component: TypeScriptGeneric },
   ],
 };
 
